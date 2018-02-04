@@ -12,8 +12,8 @@ POST - /route-calculator
 
 ```
 {
-  distance: int, # meters
-  time: int # seconds
+  "distance": "21639.268 km",
+  "time": "3 days 21 hours 9 minutes 0 seconds"
 }
 
 ```
@@ -27,6 +27,8 @@ curl -d '{"locations": ["Portland+MA", "Phoinex+AZ", "New+York+NY"]}' \
 -X POST https://vezs8zsx61.execute-api.us-east-1.amazonaws.com/dev/route-calculator
 
 ```
+
+or 
 
 ```
 
