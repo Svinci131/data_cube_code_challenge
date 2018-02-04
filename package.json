@@ -1,0 +1,19 @@
+{
+  "name": "data-cube-code-challenge-sam-vinci",
+  "version": "1.0.0",
+  "description": "### Initial Set up",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "deploy": "$(npm bin)/serverless deploy",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "serverless": "^1.26.0",
+    "serverless-python-requirements": "^3.3.0"
+  }
+}
