@@ -1,14 +1,14 @@
-## Python Code Challenge
+# Python Code Challenge
 
-### NOTES:
+## NOTES:
 
-In order to guarentee that it was easily accessible I decided to deploy via AWS LAMBDA.
+In order to guarantee that this script is easily accessible, I decided to deploy via AWS Lambda. 
 
-### Routes
+## Routes
 
 POST - /route-calculator
 
-#### Response Form
+## Expected Response
 
 ```
 {
@@ -18,7 +18,7 @@ POST - /route-calculator
 
 ```
 
-#### Example Requests
+## Example Requests
 
 ```
 
@@ -39,13 +39,13 @@ curl -d '{"locations": ["Portland+MA", "Phoinex+AZ", "New+York+NY", "Museum+Afri
 ```
 
 
-### ASSUMPTIONS
+## ASSUMPTIONS
 
   1. Order of locations matters. The first location is your origin, the last location is your final destination.
   _(So if given:
   [ Maine, Arizona, New York], you must go in order even though [ Maine, New York, Arizona] would be faster)._
 
-  2. Locations will be given in forms the google api can accept.
+  2. Locations will be given in formats the Google API can accept.
 
   3. If you can drive you must drive otherwise you must take a plane.
 
@@ -56,7 +56,7 @@ curl -d '{"locations": ["Portland+MA", "Phoinex+AZ", "New+York+NY", "Museum+Afri
 
 ## Develop - Run Locally
 _Required: (PYTHON3)_
-_(You will need to enter your own google maps API id.)_
+_(You will need to enter your own google maps API key.)_
 
 ```
 
@@ -68,7 +68,17 @@ python -m src.main
 
 ```
 
-### Python Code Challenge
+^^ This will run an "example" invocation of the lambda handler without having to actually deploy. This is mainly to showcase how the app works.
+
+## Develop - Run Tests
+
+Decided to avoid using `pytest` since it would have been the only pip requirement for the app. To run tests (from dir root, assuming venv is activated),
+
+```
+python -m src.tests.test_route_calculator
+```
+
+## Python Code Challenge
 
 Please write a Python server that:
 
