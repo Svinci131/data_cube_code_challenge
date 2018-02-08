@@ -4,6 +4,8 @@
 
 In order to guarantee that this script is easily accessible, I decided to deploy via AWS Lambda. 
 
+The number of calls allowed to the geocode api may be exceeded.
+
 ## Routes
 
 POST - /route-calculator
@@ -41,17 +43,16 @@ curl -d '{"locations": ["Portland+MA", "Phoinex+AZ", "New+York+NY", "Museum+Afri
 
 ## ASSUMPTIONS
 
-  1. Order of locations matters. The first location is your origin, the last location is your final destination.
-  _(So if given:
-  [ Maine, Arizona, New York], you must go in order even though [ Maine, New York, Arizona] would be faster)._
 
-  2. Locations will be given in formats the Google API can accept.
+  1. Locations will be given in formats the Google API can accept.
 
-  3. If you can drive you must drive otherwise you must take a plane.
+  2. If you can drive you must drive otherwise you must take a plane.
 
-  4. We have a magic airplane that can take off without a runway and don't need to find the nearest airport.
+  3. We have a magic airplane that can take off without a runway and don't need to find the nearest airport.
 
-  5. The plane will go at 878 km/h for the entire flight.
+  4. The plane will go at 878 km/h for the entire flight.
+
+  5. Distance not time is what makes a route "efficient". So, it may take less time to fly from Paris to New York than to drive from Orlando from New York, but because there are fewer miles between Orlando from New York that's what counts toward efficiency.
 
 
 ## Develop - Run Locally

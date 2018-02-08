@@ -37,5 +37,6 @@ def handler(event, context):
 '''
 if __name__ == '__main__':
   # example
-  handler({'body': '{"locations": ["Portland+MA", "Phoinex+AZ", "New+York+NY", "Museum+Africa+Lilian+Ngoyi+St+Newtown+Johannesburg+2033+South+Africa"]}'}, {})
+  #handler({'body': '{"locations": ["Portland+MA", "Phoinex+AZ", "Museum+Africa+Lilian+Ngoyi+St+Newtown+Johannesburg+2033+South+Africa"]}'}, {})
+  handler({'body': '{"locations": ["Portland+MA", "Phoinex+AZ", "New+York+NY", "San+Fransisco"]}'}, {})
 
