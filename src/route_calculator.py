@@ -9,7 +9,6 @@ from src.flight_data_calculator import get_flight_distance_in_meters, \
     get_flight_duration_in_secs
 from src.google_utils import get_distance_matrix
 
-
 def get_most_efficient_route(locations):
     """
     :type routes: list
@@ -60,6 +59,7 @@ def _find_paths(nodeIndx, locations, visited, matrix):
       nextLocation = locations[i]
       dist = _get_distance(elements[i], location, nextLocation)
       time = _get_time(elements[nodeIndx], dist)
+
       newPaths = _find_paths(i, locations, visited, matrix)
 
       for newPath in newPaths:
@@ -76,7 +76,20 @@ def _find_paths(nodeIndx, locations, visited, matrix):
 
   return paths
 
-def _get_distance(element, origin, nextDest):
+"""
+Create our own distance matrix so, we don't have to call
+the geocode api to get the length of the flight path
+between the same two places more than once.
+"""
+distances = {}
+
+def _get_distance(element, fromLocation, toLocation):
+  if (distances.get(fromLocation, None) is None):
+    distances[fromLocation] = {}
+
+  if (distances.get(fromLocation, {}).get(toLocation) is not None):
+    return distances.get(fromLocation, {}).get(toLocation)
+
   """
   Get the distance in meters of the path between two points.
   Either using the element object from the google distance matrix
@@ -86,6 +99,7 @@ def _get_distance(element, origin, nextDest):
   :rtype: int
   """
   status = element.get('status', None)
+
   if (status == 'OK'):
       """
       If a drivable route is found use
@@ -99,10 +113,11 @@ def _get_distance(element, origin, nextDest):
         calculate with the Haversine Formula.
       """
       print('No Driving Route, Calculating Flight...')
-      dist = get_flight_distance_in_meters(origin, nextDest)  # meters
+      dist = get_flight_distance_in_meters(fromLocation, toLocation)  # meters
   else:
       raise Exception('Something went wrong')
 
+  distances[fromLocation][toLocation] = dist
   return dist
 
 def _get_time(element, distance):

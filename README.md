@@ -54,6 +54,8 @@ curl -d '{"locations": ["Portland+MA", "Phoinex+AZ", "New+York+NY", "Museum+Afri
 
   5. Distance not time is what makes a route "efficient". So, it may take less time to fly from Paris to New York than to drive from Orlando from New York, but because there are fewer miles between Orlando from New York that's what counts toward efficiency.
 
+  6. Distances are different in different directions.
+
 
 ## Develop - Run Locally
 _Required: (PYTHON3)_
